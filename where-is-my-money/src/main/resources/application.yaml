@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: where-is-my-money
+  thymeleaf:
+    cache: false

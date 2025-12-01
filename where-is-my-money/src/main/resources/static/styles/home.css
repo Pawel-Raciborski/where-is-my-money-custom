@@ -1,0 +1,88 @@
+
+.main-header{
+    font-size: 3.2rem;
+}
+
+.container-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vh;
+    min-height: 100vh;
+    gap: 2rem;
+    font-size: 1.6rem;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.wallet-icon-container{
+    padding: 2rem;
+    flex: 0 0 auto;
+    width: auto;
+    margin-bottom: 6rem;
+}
+
+
+
+.wallet{
+    width: 10rem;
+    height: 10rem;
+    fill: none;
+    stroke: white;
+    background: linear-gradient(341deg,#00C856 0%, #208DF9 76%);
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.main-header{
+    margin-bottom: 4rem;
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.cards-group{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 4rem;
+}
+
+.wallet-small{
+    stroke: #a827cb;
+    background: rgb(243, 209, 255);
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.arrow-trending-up{
+    stroke: #0063af;
+    background: #b4dfff;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.users{
+    stroke: #219346;
+    background: #8cffb5;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.icon-container{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.separator-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
