@@ -17,6 +17,7 @@ btn.addEventListener('click',async function(){
     const text = groupLinkInput.value;
     try {
         if (text) {
+            console.log(text);
             await navigator.clipboard.writeText(text);
         }
         btn.parentElement.append(popup);

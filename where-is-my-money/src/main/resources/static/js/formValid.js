@@ -3,10 +3,16 @@ import {messages} from "./messages.js";
 const form = document.querySelector('.create-group-form');
 const groupNameInput = document.getElementById('group-name');
 const groupNameDiv = groupNameInput.parentElement;
+const groupNameError = createParagraph(messages.GROUP_ERROR_MESSAGE, messages.CSS_ERROR_CLASS_NAME);
+
+const emailInput = document.getElementById('email-address')
+const emailInputDiv = emailInput.parentElement;
+const emailInputError = createParagraph(messages.EMAIL_ERROR_MESSAGE, messages.CSS_ERROR_CLASS_NAME);
+
 const groupOwnerNameInput = document.getElementById('owner-name');
 const groupOwnerNameDiv = groupOwnerNameInput.parentElement;
-const groupNameError = createParagraph(messages.GROUP_ERROR_MESSAGE, messages.CSS_ERROR_CLASS_NAME);
 const groupOwnerNameError = createParagraph(messages.GROUP_OWNER_ERROR_MESSAGE, messages.CSS_ERROR_CLASS_NAME);
+
 
 function createParagraph(text, className = '') {
     const p = document.createElement('p');
@@ -25,6 +31,7 @@ function createParagraph(text, className = '') {
 form.addEventListener('submit', function (e) {
     const groupName = groupNameInput.value.trim();
     const ownerName = groupOwnerNameInput.value.trim();
+    const email = emailInput.value.trim();
 
     let isValidForm = true;
     if (ownerName === '') {
@@ -34,6 +41,11 @@ form.addEventListener('submit', function (e) {
 
     if (groupName === '') {
         appendErrorMessage(groupName, groupNameDiv, groupNameError);
+        isValidForm = false;
+    }
+
+    if (email === '') {
+        appendErrorMessage(email, emailInputDiv, emailInputError)
         isValidForm = false;
     }
 
@@ -66,4 +78,10 @@ groupOwnerNameInput.addEventListener('keyup', function (_) {
     const ownerName = groupOwnerNameInput.value.trim();
 
     appendErrorMessage(ownerName, groupOwnerNameDiv, groupOwnerNameError);
+});
+
+emailInput.addEventListener('keyup', function (_) {
+    const email = emailInput.value.trim();
+
+    appendErrorMessage(email, emailInputDiv, emailInputError);
 });
