@@ -1,12 +1,10 @@
-package org.spring_security.whereismymoney.controllers;
+package org.whereismymoney.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.spring_security.whereismymoney.config.ApplicationProperties;
-import org.spring_security.whereismymoney.dto.CreateGroupRequest;
-import org.spring_security.whereismymoney.model.Member;
-import org.spring_security.whereismymoney.model.Owner;
-import org.spring_security.whereismymoney.service.GroupService;
+import org.whereismymoney.config.ApplicationProperties;
+import org.whereismymoney.dto.CreateGroupRequest;
+import org.whereismymoney.service.GroupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

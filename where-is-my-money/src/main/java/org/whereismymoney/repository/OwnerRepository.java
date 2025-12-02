@@ -1,6 +1,6 @@
-package org.spring_security.whereismymoney.repository;
+package org.whereismymoney.repository;
 
-import org.spring_security.whereismymoney.model.Owner;
+import org.whereismymoney.model.Owner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

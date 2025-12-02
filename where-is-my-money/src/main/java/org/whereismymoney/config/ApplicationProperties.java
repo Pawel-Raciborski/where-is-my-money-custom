@@ -1,4 +1,4 @@
-package org.spring_security.whereismymoney.config;
+package org.whereismymoney.config;
 
 import lombok.Getter;
 import lombok.Setter;

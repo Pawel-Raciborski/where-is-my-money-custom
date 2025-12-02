@@ -1,4 +1,4 @@
-package org.spring_security.whereismymoney.config;
+package org.whereismymoney.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

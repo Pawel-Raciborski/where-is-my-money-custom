@@ -1,7 +1,7 @@
-package org.spring_security.whereismymoney.util;
+package org.whereismymoney.util;
 
 import lombok.experimental.UtilityClass;
-import org.spring_security.whereismymoney.model.Owner;
+import org.whereismymoney.model.Owner;
 
 @UtilityClass
 public class OwnerUtil {

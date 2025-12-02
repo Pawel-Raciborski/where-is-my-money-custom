@@ -1,12 +1,12 @@
-package org.spring_security.whereismymoney.service;
+package org.whereismymoney.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.spring_security.whereismymoney.dto.CreateGroupRequest;
-import org.spring_security.whereismymoney.model.Group;
-import org.spring_security.whereismymoney.model.Owner;
-import org.spring_security.whereismymoney.repository.GroupRepository;
-import org.spring_security.whereismymoney.util.GroupUtil;
+import org.whereismymoney.dto.CreateGroupRequest;
+import org.whereismymoney.model.Group;
+import org.whereismymoney.model.Owner;
+import org.whereismymoney.repository.GroupRepository;
+import org.whereismymoney.util.GroupUtil;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,10 +1,9 @@
-package org.spring_security.whereismymoney.service;
+package org.whereismymoney.service;
 
 import lombok.RequiredArgsConstructor;
-import org.spring_security.whereismymoney.model.Member;
-import org.spring_security.whereismymoney.model.Owner;
-import org.spring_security.whereismymoney.repository.OwnerRepository;
-import org.spring_security.whereismymoney.util.OwnerUtil;
+import org.whereismymoney.model.Owner;
+import org.whereismymoney.repository.OwnerRepository;
+import org.whereismymoney.util.OwnerUtil;
 import org.springframework.stereotype.Service;
 
 @Service

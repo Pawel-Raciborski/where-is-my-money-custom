@@ -1,4 +1,4 @@
-package org.spring_security.whereismymoney.model;
+package org.whereismymoney.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
