@@ -1,15 +1,12 @@
 package org.whereismymoney.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 public record CreateGroupRequest(
         @NotEmpty
-        String name,
+        String groupName,
         @NotEmpty
         String ownerFullName,
-        @Email
-        @NotEmpty
-        String email
+        String description
 ) {
 }

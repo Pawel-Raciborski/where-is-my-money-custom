@@ -2,19 +2,18 @@ package org.whereismymoney.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Setter
 @Getter
 @Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "tokens")
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,4 +22,6 @@ public class Token {
     private LocalDateTime expireDateTime;
     @OneToOne
     private Group group;
+    @OneToOne
+    private User user;
 }

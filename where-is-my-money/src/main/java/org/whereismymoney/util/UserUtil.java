@@ -1,12 +1,12 @@
 package org.whereismymoney.util;
 
 import lombok.experimental.UtilityClass;
-import org.whereismymoney.model.Owner;
+import org.whereismymoney.model.User;
 
 @UtilityClass
-public class OwnerUtil {
-    public Owner buildOwner(String fullName){
-        return Owner.builder()
+public class UserUtil {
+    public User buildUser(String fullName){
+        return User.builder()
                 .fullName(fullName)
                 .build();
     }

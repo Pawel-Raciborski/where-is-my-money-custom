@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: development
   application:
     name: where-is-my-money
   thymeleaf:
@@ -7,10 +9,14 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: true
+    defer-datasource-initialization: true
   datasource:
     url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/where-is-my-money}
     username: ${DATASOURCE_USER:postgres}
     password: ${DATASOURCE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
 app:
   base-url: http://localhost:8080/

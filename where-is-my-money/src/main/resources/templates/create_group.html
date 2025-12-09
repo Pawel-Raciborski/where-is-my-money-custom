@@ -22,16 +22,17 @@
             <form class="create-group-form" th:action="@{/group/new}" method="POST" th:if="${!groupCreated}">
                 <div class="mt-3">
                     <label for="group-name" class="form-label">Nazwa grupy</label>
-                    <input id="group-name" name="name" class="form-control" type="text">
-                </div>
-                <div class="mt-3">
-                    <label for="owner-name" class="form-label">Twoje imię</label>
-                    <input id="owner-name" name="ownerFullName" class="form-control" type="text">
+                    <input id="group-name" name="groupName" class="form-control" type="text">
                 </div>
 
                 <div class="mt-3">
-                    <label for="email-address" class="form-label">Adres email</label>
-                    <input id="email-address" name="email" class="form-control" type="email">
+                    <label for="group-description" class="form-label">Opis(opcjonalnie)</label>
+                    <textarea id="group-description" name="description" class="form-control form-text"></textarea>
+                </div>
+
+                <div class="mt-3">
+                    <label for="owner-name" class="form-label">Twoje imię</label>
+                    <input id="owner-name" name="ownerFullName" class="form-control" type="text">
                 </div>
 
                 <div class="mt-4 text-end">
@@ -56,7 +57,7 @@
                     <div class="col-md-10">
                         <label for="group-link" class="form-label">Link do grupy</label>
                         <input class="group-link-input form-control text-black fw-bold" id="group-link" type="text"
-                               name="groupLink" disabled th:value="${groupId}">
+                               name="groupLink" disabled th:value="${groupUrl}">
                     </div>
                     <div class="col-md-2 d-flex align-items-end position-relative">
                         <button class="btn-group-copy btn btn-light border border-1 w-100">
@@ -70,7 +71,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-md">
-                        <button class="btn green bg-linear-gradient text-white w-100">Przejdź do grupy</button>
+                        <a th:href="@{/group/{groupId}(groupId=${groupId},token=${tokenId})}" class="btn green bg-linear-gradient text-white w-100">Przejdź do grupy</a>
                     </div>
                 </div>
             </div>
