@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.whereismymoney.dto.CreateGroupRequest;
+import org.whereismymoney.dto.GroupDetails;
 import org.whereismymoney.model.Group;
 import org.whereismymoney.model.Token;
 import org.whereismymoney.model.User;
@@ -11,6 +12,7 @@ import org.whereismymoney.repository.GroupRepository;
 import org.whereismymoney.util.GroupUtil;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +31,7 @@ public class GroupServiceImpl implements GroupService {
             owner = userService.create(createGroupRequest.ownerFullName());
 
             emptyToken.setUser(owner);
-            owner.getTokens().add(emptyToken);
+            owner.setToken(emptyToken);
         } else {
             owner = optionalUser.get();
         }
@@ -40,6 +42,11 @@ public class GroupServiceImpl implements GroupService {
         Group savedGroup = groupRepository.save(groupToCreate);
         emptyToken.setGroup(savedGroup);
         return savedGroup;
+    }
+
+    @Override
+    public GroupDetails getGroupDetails(UUID groupId, String token) {
+        return null;
     }
 
 }

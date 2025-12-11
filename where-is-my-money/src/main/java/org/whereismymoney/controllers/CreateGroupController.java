@@ -52,6 +52,7 @@ public class CreateGroupController {
             @RequestParam(required = false) String token,
             Model model
     ) {
+        groupService.getGroupDetails(groupId, token);
         System.out.println("groupId: " + groupId + ", token: " + token);
         return "group";
     }

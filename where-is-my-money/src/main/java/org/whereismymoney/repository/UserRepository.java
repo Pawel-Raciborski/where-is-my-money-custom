@@ -11,11 +11,10 @@ import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, UUID> {
-    Optional<User> findByEmail(String email);
 
     @Query("""
     SELECT u FROM User u
-    JOIN FETCH u.tokens t
+    JOIN FETCH u.token t
     WHERE t.token=:token
     """)
     Optional<User> findByTokenValue(@Param("token") String token);
