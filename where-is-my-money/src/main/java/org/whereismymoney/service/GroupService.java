@@ -9,5 +9,5 @@ import java.util.UUID;
 public interface GroupService {
     Group create(CreateGroupRequest createGroupRequest, String tokenId);
 
-    GroupDetails getGroupDetails(UUID groupId, String token);
+
 }

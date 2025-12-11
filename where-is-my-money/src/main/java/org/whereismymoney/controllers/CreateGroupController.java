@@ -3,14 +3,12 @@ package org.whereismymoney.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.whereismymoney.config.ApplicationProperties;
+import org.whereismymoney.config.properties.ApplicationProperties;
 import org.whereismymoney.dto.CreateGroupRequest;
 import org.whereismymoney.model.Group;
 import org.whereismymoney.service.GroupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/group")
@@ -44,16 +42,5 @@ public class CreateGroupController {
         System.out.println("Registering user: " + createGroupRequest);
 
         return "create_group";
-    }
-
-    @GetMapping("/{groupId}")
-    public String viewGroup(
-            @PathVariable UUID groupId,
-            @RequestParam(required = false) String token,
-            Model model
-    ) {
-        groupService.getGroupDetails(groupId, token);
-        System.out.println("groupId: " + groupId + ", token: " + token);
-        return "group";
     }
 }

@@ -32,4 +32,6 @@ public class Group {
     private Set<User> members = new HashSet<>();
     @OneToOne(mappedBy = "group")
     private Token token;
+    @OneToOne
+    private VerificationCode verificationCode;
 }

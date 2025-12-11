@@ -1,4 +1,4 @@
-package org.whereismymoney.config;
+package org.whereismymoney.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;
