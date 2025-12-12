@@ -5,7 +5,7 @@ import org.whereismymoney.dto.GroupDetails;
 import java.util.UUID;
 
 public interface GroupDetailsService {
-    GroupDetails getGroupDetails(UUID groupId, String token);
+    GroupDetails getGroupDetails(UUID groupId);
 
 }
 

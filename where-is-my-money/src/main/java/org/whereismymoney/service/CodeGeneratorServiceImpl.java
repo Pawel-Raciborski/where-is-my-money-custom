@@ -20,6 +20,7 @@ public class CodeGeneratorServiceImpl implements CodeGeneratorService {
         return VerificationCode.builder()
                 .code(generatedCode)
                 .expireAt(LocalDateTime.now().plus(verificationProperties.getCodeExpirationMinutes()))
+                .isVerified(false)
                 .build();
     }
 }

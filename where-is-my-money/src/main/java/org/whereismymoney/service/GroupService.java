@@ -10,4 +10,5 @@ public interface GroupService {
     Group create(CreateGroupRequest createGroupRequest, String tokenId);
 
 
+    Group findGroupWithToken(UUID groupId, String tokenId);
 }

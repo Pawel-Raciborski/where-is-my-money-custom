@@ -19,4 +19,5 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     """)
     Optional<User> findByTokenValue(@Param("token") String token);
 
+    Optional<User> findByEmail(String email);
 }

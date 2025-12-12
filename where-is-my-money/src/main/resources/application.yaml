@@ -22,4 +22,4 @@ app:
   base-url: http://localhost:8080/
 verification:
   code-length: 4
-  code-expiration-minutes: 10m
+  code-expiration-minutes: 1m

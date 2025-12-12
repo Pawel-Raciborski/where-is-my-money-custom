@@ -16,8 +16,10 @@ public class UserServiceImpl implements UserService {
     private final UserValidator userValidator;
 
     @Override
-    public User create(String fullName) {
-        User ownerToCreate = UserUtil.buildUser(fullName);
+    public User create(String fullName, String email) {
+        userValidator.isEmailNotPresent(email);
+
+        User ownerToCreate = UserUtil.buildUser(fullName,email);
         return userRepository.save(ownerToCreate);
     }
 

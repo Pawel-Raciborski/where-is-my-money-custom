@@ -1,0 +1,14 @@
+.code-input {
+    width: 60px;
+    height: 80px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+.code-input:focus {
+    border-color: #bababa;
+    outline: none;
+}

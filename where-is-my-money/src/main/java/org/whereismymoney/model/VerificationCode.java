@@ -1,9 +1,6 @@
 package org.whereismymoney.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"group"})
 @Entity
 public class VerificationCode {
     @Id
@@ -20,4 +18,7 @@ public class VerificationCode {
     private Integer id;
     private String code;
     private LocalDateTime expireAt;
+    private boolean isVerified;
+    @OneToOne(mappedBy = "verificationCode")
+    private Group group;
 }

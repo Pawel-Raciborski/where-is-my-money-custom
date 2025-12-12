@@ -11,6 +11,7 @@ import org.whereismymoney.repository.GroupRepository;
 import org.whereismymoney.util.GroupUtil;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +27,7 @@ public class GroupServiceImpl implements GroupService {
         Token emptyToken = tokenService.findTokenByValue(token)
                 .orElse(tokenService.createEmptyToken());
         if (optionalUser.isEmpty()) {
-            owner = userService.create(createGroupRequest.ownerFullName());
+            owner = userService.create(createGroupRequest.ownerFullName(),createGroupRequest.email());
 
             emptyToken.setUser(owner);
             owner.setToken(emptyToken);
@@ -40,6 +41,12 @@ public class GroupServiceImpl implements GroupService {
         Group savedGroup = groupRepository.save(groupToCreate);
         emptyToken.setGroup(savedGroup);
         return savedGroup;
+    }
+
+    @Override
+    public Group findGroupWithToken(UUID groupId, String tokenValue) {
+        return groupRepository.findByIdAndToken(groupId,tokenValue)
+                .orElseThrow(() -> new IllegalArgumentException("Group not found with the provided ID and token."));
     }
 
 }

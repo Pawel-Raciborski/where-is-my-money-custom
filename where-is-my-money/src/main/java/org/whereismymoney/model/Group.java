@@ -33,5 +33,6 @@ public class Group {
     @OneToOne(mappedBy = "group")
     private Token token;
     @OneToOne
+    @JoinColumn(name = "group_verification_code")
     private VerificationCode verificationCode;
 }
