@@ -49,4 +49,10 @@ public class GroupServiceImpl implements GroupService {
                 .orElseThrow(() -> new IllegalArgumentException("Group not found with the provided ID and token."));
     }
 
+    @Override
+    public Group findById(UUID uuid) {
+        return groupRepository.findById(uuid)
+                .orElseThrow(() -> new IllegalArgumentException("Group not found with the provided ID."));
+    }
+
 }

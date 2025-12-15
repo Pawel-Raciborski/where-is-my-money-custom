@@ -11,4 +11,6 @@ public interface GroupService {
 
 
     Group findGroupWithToken(UUID groupId, String tokenId);
+
+    Group findById(UUID uuid);
 }

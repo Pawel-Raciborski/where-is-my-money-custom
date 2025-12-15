@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.whereismymoney.validation.UserValidator;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -26,5 +27,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findByTokenValue(String tokenId) {
         return userRepository.findByTokenValue(tokenId);
+    }
+
+    @Override
+    public User findById(UUID id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found!"));
     }
 }

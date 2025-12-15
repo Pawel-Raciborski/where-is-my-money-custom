@@ -37,6 +37,7 @@ public class GroupController {
 
         if(!isTokenPresent) {
             // TODO dodać logikę dla gościa
+            groupDetailsService.getGroupDetails(groupId);
             return "group";
         }
 

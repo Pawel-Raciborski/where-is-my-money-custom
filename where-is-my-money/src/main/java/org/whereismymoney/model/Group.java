@@ -35,4 +35,8 @@ public class Group {
     @OneToOne
     @JoinColumn(name = "group_verification_code")
     private VerificationCode verificationCode;
+    @OneToMany(mappedBy = "group")
+    private Set<Debt> debts;
+    @OneToMany
+    private Set<Expense> expenses;
 }
