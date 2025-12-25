@@ -15,7 +15,7 @@ public class ExpenseUtil {
         return Expense.builder()
                 .name(name)
                 .owner(owner)
-                .amount(amount)
+                .totalAmount(amount)
                 .isCustom(isCustom)
                 .group(group)
                 .time(LocalDateTime.now())

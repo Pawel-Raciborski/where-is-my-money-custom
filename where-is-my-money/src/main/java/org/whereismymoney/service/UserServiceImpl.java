@@ -7,6 +7,7 @@ import org.whereismymoney.util.UserUtil;
 import org.springframework.stereotype.Service;
 import org.whereismymoney.validation.UserValidator;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -33,5 +34,10 @@ public class UserServiceImpl implements UserService {
     public User findById(UUID id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found!"));
+    }
+
+    @Override
+    public List<User> findAllByIds(List<UUID> ids) {
+        return userRepository.findAllById(ids);
     }
 }

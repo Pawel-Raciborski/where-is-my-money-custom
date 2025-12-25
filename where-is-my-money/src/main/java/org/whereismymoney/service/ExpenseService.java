@@ -4,5 +4,5 @@ import org.whereismymoney.dto.CreateExpenseRequest;
 import org.whereismymoney.model.Expense;
 
 public interface ExpenseService {
-    Expense createExpense(CreateExpenseRequest expense);
+    Expense createExpense(CreateExpenseRequest expense, String token);
 }

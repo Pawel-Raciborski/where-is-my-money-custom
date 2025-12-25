@@ -8,6 +8,7 @@ import org.whereismymoney.model.UserExpense;
 import org.whereismymoney.repository.UserExpenseRepository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,5 +25,10 @@ public class UserExpenseServiceImpl implements UserExpenseService {
 
         return userExpenseRepository.save(userExpense);
 
+    }
+
+    @Override
+    public List<UserExpense> saveAll(List<UserExpense> userExpenses) {
+        return userExpenseRepository.saveAll(userExpenses);
     }
 }

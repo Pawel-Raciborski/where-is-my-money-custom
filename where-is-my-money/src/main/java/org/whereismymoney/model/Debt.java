@@ -1,20 +1,24 @@
 package org.whereismymoney.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Debt {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
     private User debtor;
     @OneToOne
-    private User recipient;
+    private User creditor;
     private BigDecimal amount;
     @ManyToOne
     private Group group;

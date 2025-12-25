@@ -3,6 +3,7 @@ package org.whereismymoney.service;
 import jakarta.validation.constraints.NotNull;
 import org.whereismymoney.model.User;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,5 +13,7 @@ public interface UserService {
     Optional<User> findByTokenValue(String tokenId);
 
     User findById(@NotNull UUID uuid);
+
+    List<User> findAllByIds(List<UUID> ids);
 
 }

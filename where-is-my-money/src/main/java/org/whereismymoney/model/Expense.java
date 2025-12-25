@@ -6,7 +6,6 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -21,7 +20,7 @@ public class Expense {
     private String name;
     @OneToOne
     private User owner;
-    private BigDecimal amount;
+    private BigDecimal totalAmount;
     @OneToMany
     private Set<UserExpense> expenseMembers;
     @ManyToOne
