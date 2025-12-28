@@ -9,7 +9,7 @@ import java.util.UUID;
 public class TokenUtil {
     public static Token buildToken() {
         return Token.builder()
-                .token(UUID.randomUUID().toString())
+                .value(UUID.randomUUID().toString())
                 .build();
     }
 }

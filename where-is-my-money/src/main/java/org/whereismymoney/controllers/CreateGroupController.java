@@ -37,7 +37,7 @@ public class CreateGroupController {
         Group createdGroup = groupService.create(createGroupRequest, token);
 
         if (Objects.isNull(token)) {
-            Cookie cookie = new Cookie("GROUP_TOKEN", createdGroup.getToken().getToken());
+            Cookie cookie = new Cookie("GROUP_TOKEN", createdGroup.getToken().getValue());
             cookie.setPath("/");
             cookie.setHttpOnly(true);
             cookie.setMaxAge(60 * 60 * 24 * 30); //
@@ -51,6 +51,7 @@ public class CreateGroupController {
         model.addAttribute("groupCreated", true);
         model.addAttribute("groupUrl", url);
         model.addAttribute("groupId", createdGroup.getId());
+        model.addAttribute("tokenId", createdGroup.getToken().getValue());
         System.out.println("Registering user: " + createGroupRequest);
 
         return "create_group";

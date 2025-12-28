@@ -18,7 +18,7 @@ public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String token;
+    private String value;
     private LocalDateTime expireDateTime;
     @OneToOne
     private Group group;

@@ -15,7 +15,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query("""
     SELECT u FROM User u
     JOIN FETCH u.token t
-    WHERE t.token=:token
+    WHERE t.value=:token
     """)
     Optional<User> findByTokenValue(@Param("token") String token);
 

@@ -2,14 +2,11 @@ package org.whereismymoney.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.whereismymoney.exceptions.TokenException;
 import org.whereismymoney.model.Token;
-import org.whereismymoney.model.User;
 import org.whereismymoney.repository.TokenRepository;
 import org.whereismymoney.util.TokenUtil;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +23,6 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public Optional<Token> findTokenByValue(String tokenId) {
-        return tokenRepository.findByToken(tokenId);
+        return tokenRepository.findByValue(tokenId);
     }
 }

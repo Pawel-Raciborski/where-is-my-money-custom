@@ -11,9 +11,8 @@ import java.util.UUID;
 @Repository
 public interface GroupRepository extends JpaRepository<Group, UUID> {
     @Query("""
-            SELECT g FROM Group g
-            JOIN FETCH g.token t
-                WHERE g.id = :id AND t.token = :token
+                SELECT g FROM Group g
+                WHERE g.id = :id AND TRIM(g.token.value) = TRIM(:token)
             """)
     Optional<Group> findByIdAndToken(UUID id, String token);
 }
