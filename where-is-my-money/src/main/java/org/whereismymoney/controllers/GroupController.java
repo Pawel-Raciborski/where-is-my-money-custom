@@ -59,6 +59,7 @@ public class GroupController {
 
         GroupDetails groupDetails = groupDetailsService.getGroupDetails(groupId);
         System.out.println("groupId: " + groupId + ", token: " + token);
+        model.addAttribute("groupDetails", groupDetails);
         return "group";
     }
 

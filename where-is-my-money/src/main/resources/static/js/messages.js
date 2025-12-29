@@ -22,4 +22,15 @@ export const utils = {
 
     },
 
+    createHeader: function(headingLevel, text, className = '') {
+        const header = document.createElement(`${headingLevel}`);
+        if (text) {
+            header.textContent = text;
+        }
+        if (className) {
+            header.className = className;
+        }
+        return header;
+    }
+
 };

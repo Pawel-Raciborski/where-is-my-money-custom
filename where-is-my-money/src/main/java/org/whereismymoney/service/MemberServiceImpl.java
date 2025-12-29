@@ -23,7 +23,7 @@ public class MemberServiceImpl implements MemberService {
         log.info("Searching for group with ID: {} and token: {}", groupId, token);
         Group group = groupService.findGroupWithToken(groupId, token);
 
-        User user = userService.create(createMemberRequest.name(), group.getId().toString());
+        User user = userService.create(createMemberRequest.name(), UUID.randomUUID().toString());
         group.getMembers().add(user);
         return user;
     }
