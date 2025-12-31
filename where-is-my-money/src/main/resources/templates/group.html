@@ -185,7 +185,12 @@
                 </div>
             </div>
 
-            <div class="mt-3 custom-expense-container bg-light"></div>
+            <div class="mt-3 d-none custom-expense-container">
+                <div class="d-flex flex-row gap-3 justify-content-between">
+                    <p class="fw-bold">Kwoty uczestników:</p>
+                    <p class="text-success split-expense-sum"><span class="left-sum">0.00</span>&sol;<span class="right-sum">0.00</span>zł</p>
+                </div>
+            </div>
 
             <div class="mt-4 d-flex">
                 <button class="btn btn-primary w-100">Dodaj</button>
@@ -213,5 +218,6 @@
 <script type="module" th:src="@{/js/openDialog.js}"></script>
 <script type="module" th:src="@{/js/nonEmptyField.js}"></script>
 <script type="module" th:src="@{/js/customSplit.js}"></script>
+<script type="module" th:src="@{/js/expenseSplitCalculator.js}"></script>
 </body>
 </html>

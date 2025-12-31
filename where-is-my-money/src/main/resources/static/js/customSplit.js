@@ -4,6 +4,7 @@ const customSplitBtn = document.querySelector('.custom-split');
 const expenseDiv = document.querySelector('.expense-members');
 const expenseContainer = document.querySelector('.custom-expense-container');
 let selectedMembers = [];
+const memberMap = new Map();
 
 function createMemberObject(item) {
     return {
@@ -15,11 +16,13 @@ function createMemberObject(item) {
 function createMemberSplitItem(member) {
     member = createMemberObject(member);
     const div = document.createElement('div');
+    div.className = 'd-flex flex-row align-items-center gap-1 justify-content-between align-items-center mt-2';
 
     div.insertAdjacentHTML('afterbegin', `<label for="${member.id}" class="form-check-label">${member.fullName}</label>
-        <div class="d-flex flex-row align-items-center gap-1 justify-content-end">
-            <input id="${member.id}" type="text" class="form-control expense-member-selected w-25"/>
+            <div class="d-flex flex-row align-items-center gap-1 justify-content-end">
+            <input id="${member.id}" data-id="${member.id}" type="number" step="0.01" value="0.00" class="form-control expense-member-selected expense-split-value w-50"/>
             <span>zł</span>
+            </div>
         </div>`);
 
 
@@ -42,20 +45,21 @@ function createMemberDiv() {
 * */
 
 expenseDiv.addEventListener('change', (e) => {
-    if (e.target.classList.contains('expense-member-checkbox')) {
-        let isChecked = e.target.checked;
-        let item = e.target.parentElement;
-        const memberDiv = createMemberSplitItem(item);
 
-        if (isChecked) {
-            if (!selectedMembers.includes(item)) {
-                expenseContainer.insertAdjacentElement('beforeend', memberDiv);
-                selectedMembers.push(item);
-            }
+    if (e.target.classList.contains('expense-member-checkbox')) {
+        let checkbox = e.target;
+        let parentItem = checkbox.parentElement;
+        console.log('ITEM: ', parentItem);
+
+        if (checkbox.checked) {
+            const memberDiv = createMemberSplitItem(parentItem);
+            memberMap.set(checkbox, memberDiv);
+            expenseContainer.appendChild(memberDiv);
         } else {
-            if (selectedMembers.includes(item)) {
-                selectedMembers = selectedMembers.filter(i => i !== item);
-                expenseContainer.removeChild(memberDiv);
+            const memberToRemove = memberMap.get(checkbox);
+            if (memberToRemove) {
+                expenseContainer.removeChild(memberToRemove);
+                memberMap.delete(checkbox);
             }
         }
     }
@@ -64,15 +68,8 @@ expenseDiv.addEventListener('change', (e) => {
 
 customSplitBtn.addEventListener('change', (e) => {
     if (e.target.checked) {
-        const header = utils.createParagraph('Kwoty dla uczestników:', 'mb-2 fw-bold');
-        expenseContainer.appendChild(header);
-        selectedMembers.forEach(member => {
-            expenseContainer.insertAdjacentElement('beforeend', createMemberSplitItem(member));
-        });
         expenseContainer.className = 'mt-3 d-flex flex-column custom-expense-container bg-light p-2 rounded-2';
-        console.log(expenseContainer);
     } else {
-        expenseContainer.replaceChildren();
         expenseContainer.className = 'd-none custom-expense-container';
     }
 });
