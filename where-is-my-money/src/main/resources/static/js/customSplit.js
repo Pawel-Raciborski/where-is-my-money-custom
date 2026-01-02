@@ -20,7 +20,8 @@ function createMemberSplitItem(member) {
 
     div.insertAdjacentHTML('afterbegin', `<label for="${member.id}" class="form-check-label">${member.fullName}</label>
             <div class="d-flex flex-row align-items-center gap-1 justify-content-end">
-            <input id="${member.id}" data-id="${member.id}" type="number" step="0.01" value="0.00" class="form-control expense-member-selected expense-split-value w-50"/>
+            <input type="hidden" name="userId" value="${member.id}"/>
+            <input id="${member.id}" data-id="${member.id}" name="price" type="number" step="0.01" value="0.00" class="form-control expense-member-selected expense-split-value w-50"/>
             <span>zł</span>
             </div>
         </div>`);
@@ -45,11 +46,9 @@ function createMemberDiv() {
 * */
 
 expenseDiv.addEventListener('change', (e) => {
-
     if (e.target.classList.contains('expense-member-checkbox')) {
         let checkbox = e.target;
         let parentItem = checkbox.parentElement;
-        console.log('ITEM: ', parentItem);
 
         if (checkbox.checked) {
             const memberDiv = createMemberSplitItem(parentItem);

@@ -1,6 +1,7 @@
 package org.whereismymoney.util;
 
 import lombok.experimental.UtilityClass;
+import org.whereismymoney.controllers.v2.dto.GroupDto;
 import org.whereismymoney.model.Group;
 import org.whereismymoney.model.User;
 
@@ -19,5 +20,16 @@ public class GroupUtil {
                 .lastVisitedDate(localDateTime)
                 .isActive(true)
                 .build();
+    }
+
+    public GroupDto mapToDto(Group group){
+        return new GroupDto(
+                group.getId(),
+                group.getName(),
+                group.getDescription(),
+                group.getCreationDate(),
+                group.getLastVisitedDate(),
+                group.isActive()
+        );
     }
 }

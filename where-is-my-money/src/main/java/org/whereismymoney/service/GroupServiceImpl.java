@@ -23,7 +23,7 @@ public class GroupServiceImpl implements GroupService {
     @Transactional
     public Group create(CreateGroupRequest createGroupRequest, String token) {
         User owner;
-        Optional<User> optionalUser = userService.findByTokenValue(token);
+        Optional<User> optionalUser = userService.findByEmail(createGroupRequest.email());
         Token emptyToken = tokenService.findTokenByValue(token)
                 .orElse(tokenService.createEmptyToken());
         if (optionalUser.isEmpty()) {

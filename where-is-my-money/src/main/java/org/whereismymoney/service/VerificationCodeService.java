@@ -12,7 +12,9 @@ public interface VerificationCodeService {
 
     boolean checkIsVerified(UUID groupId, String token);
 
-    Optional<VerificationCode> checkIfExistForGroupWithToken(UUID groupId, String token);
+    Optional<VerificationCode> findCodeForGroupWithToken(UUID groupId, String token);
 
     void deletePreviousVerificationCodeForGroupWithToken(UUID groupId, String token);
+
+    boolean verify(UUID groupId, String token, String code);
 }

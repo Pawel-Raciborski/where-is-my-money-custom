@@ -8,6 +8,7 @@ import org.whereismymoney.dto.CreateMemberRequest;
 import org.whereismymoney.model.Group;
 import org.whereismymoney.model.User;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -26,5 +27,10 @@ public class MemberServiceImpl implements MemberService {
         User user = userService.create(createMemberRequest.name(), UUID.randomUUID().toString());
         group.getMembers().add(user);
         return user;
+    }
+
+    @Override
+    public List<User> getGroupMembers(UUID groupId) {
+        return userService.findAllInGroup(groupId);
     }
 }

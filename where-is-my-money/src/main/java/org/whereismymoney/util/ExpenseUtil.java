@@ -1,6 +1,7 @@
 package org.whereismymoney.util;
 
 import lombok.experimental.UtilityClass;
+import org.whereismymoney.controllers.v2.dto.ExpenseDto;
 import org.whereismymoney.model.Expense;
 import org.whereismymoney.model.Group;
 import org.whereismymoney.model.User;
@@ -20,5 +21,17 @@ public class ExpenseUtil {
                 .group(group)
                 .time(LocalDateTime.now())
                 .build();
+    }
+
+    public static ExpenseDto mapToDto(Expense newExpense) {
+        return new ExpenseDto(
+                newExpense.getId(),
+                newExpense.getName(),
+                newExpense.getOwner().getId(),
+                newExpense.getTotalAmount(),
+                newExpense.isCustom(),
+                newExpense.getTime(),
+                newExpense.getGroup().getId()
+        );
     }
 }

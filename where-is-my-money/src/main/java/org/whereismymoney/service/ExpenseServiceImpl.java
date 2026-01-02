@@ -2,6 +2,7 @@ package org.whereismymoney.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.whereismymoney.dto.CreateExpenseRequest;
 import org.whereismymoney.model.Expense;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ExpenseServiceImpl implements ExpenseService {
@@ -28,15 +30,18 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     @Transactional
-    public Expense createExpense(CreateExpenseRequest expense, String token) {
+    public Expense createExpense(CreateExpenseRequest expense, String token, UUID groupId) {
+        log.info("Expense creation requested: {} for groupId: {}", expense, groupId);
         User expenseOwner = userService.findById(expense.expenseOwner());
-        Group group = groupService.findGroupWithToken(expense.groupId(), token);
+        Group group = groupService.findGroupWithToken(groupId, token);
 
         BigDecimal totalAmount = expense.expenseMembers().stream()
                 .map(org.whereismymoney.dto.UserExpense::price)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+        log.info("Calculated total amount from members: {}", totalAmount);
+        log.info("Total amount and expense amount: {} - {}", totalAmount, expense.amount());
 
-        if (totalAmount.compareTo(expense.amount()) <= 0) {
+        if (totalAmount.compareTo(expense.amount()) < 0) {
             throw new RuntimeException("Suma składowa nie zgadza się z całkowitą kwotą!");
         }
 
@@ -65,5 +70,10 @@ public class ExpenseServiceImpl implements ExpenseService {
         debtCalculationService.createAndSave(group, newExpense, savedUserExpenses);
 
         return newExpense;
+    }
+
+    @Override
+    public List<Expense> getGroupExpenses(UUID groupId) {
+        return expenseRepository.findAllGroupExpenses(groupId);
     }
 }

@@ -18,7 +18,7 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToOne
+    @ManyToOne
     private User owner;
     private BigDecimal totalAmount;
     @OneToMany

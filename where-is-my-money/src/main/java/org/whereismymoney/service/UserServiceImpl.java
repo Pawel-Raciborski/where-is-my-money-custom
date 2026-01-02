@@ -15,12 +15,9 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-    private final UserValidator userValidator;
 
     @Override
     public User create(String fullName, String email) {
-        userValidator.isEmailNotPresent(email);
-
         User ownerToCreate = UserUtil.buildUser(fullName,email);
         return userRepository.save(ownerToCreate);
     }
@@ -28,6 +25,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findByTokenValue(String tokenId) {
         return userRepository.findByTokenValue(tokenId);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override
@@ -39,5 +41,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllByIds(List<UUID> ids) {
         return userRepository.findAllById(ids);
+    }
+
+    @Override
+    public List<User> findAllInGroup(UUID groupId) {
+        return userRepository.findAllInGroup(groupId);
     }
 }

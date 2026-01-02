@@ -1,8 +1,6 @@
 package org.whereismymoney.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,6 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class UserExpense {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private User user;

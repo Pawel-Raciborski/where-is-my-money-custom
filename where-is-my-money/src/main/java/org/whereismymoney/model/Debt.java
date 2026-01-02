@@ -15,9 +15,9 @@ public class Debt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @ManyToOne
     private User debtor;
-    @OneToOne
+    @ManyToOne
     private User creditor;
     private BigDecimal amount;
     @ManyToOne

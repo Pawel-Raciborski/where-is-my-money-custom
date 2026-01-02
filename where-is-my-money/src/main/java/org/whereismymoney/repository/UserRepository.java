@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.whereismymoney.model.User;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,4 +21,12 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByTokenValue(@Param("token") String token);
 
     Optional<User> findByEmail(String email);
+
+    @Query("""
+    SELECT u FROM User u
+    JOIN u.memberGroups mg
+    WHERE mg.id=:groupId
+    ORDER BY u.fullName
+    """)
+    List<User> findAllInGroup(@Param("groupId") UUID groupId);
 }

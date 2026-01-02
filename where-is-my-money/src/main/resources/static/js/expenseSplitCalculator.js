@@ -4,8 +4,7 @@ const expensePriceInput = document.getElementById('expense-price');
 const leftSum = splitExpenseParagraph.querySelector('.left-sum');
 const rightSum = splitExpenseParagraph.querySelector('.right-sum');
 const customExpenseContainer = document.querySelector('.custom-expense-container');
-let partSum = 0;
-let total = 0;
+const saveExpenseBtn = document.querySelector('.save-expense-btn');
 let isChecked = false;
 
 
@@ -19,8 +18,10 @@ function checkIsEqualTotalSum(sum) {
     splitExpenseParagraph.classList.remove('text-danger', 'text-success');
     if (!isScaleEqual) {
         splitExpenseParagraph.classList.add('text-danger');
+        saveExpenseBtn.disabled = true;
     } else {
         splitExpenseParagraph.classList.add('text-success');
+        saveExpenseBtn.disabled = false;
     }
 }
 

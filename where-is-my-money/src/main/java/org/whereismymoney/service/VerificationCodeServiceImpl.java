@@ -52,7 +52,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
     }
 
     @Override
-    public Optional<VerificationCode> checkIfExistForGroupWithToken(UUID groupId, String token) {
+    public Optional<VerificationCode> findCodeForGroupWithToken(UUID groupId, String token) {
         Group groupWithToken = groupService.findGroupWithToken(groupId, token);
         return Optional.ofNullable(groupWithToken.getVerificationCode());
     }
@@ -65,5 +65,20 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
 
         groupWithToken.setVerificationCode(null);
         verificationCodeRepository.delete(verificationCode);
+    }
+
+    @Override
+    public boolean verify(UUID groupId, String token, String code) {
+        Optional<VerificationCode> codeForGroupWithToken = findCodeForGroupWithToken(groupId, token);
+
+        if(codeForGroupWithToken.isPresent()) {
+            VerificationCode verificationCode = codeForGroupWithToken.get();
+            if(verificationCode.getCode().equals(code) && verificationCode.getExpireAt().isAfter(LocalDateTime.now())) {
+                verificationCode.setVerified(true);
+                verificationCodeRepository.save(verificationCode);
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -41,7 +41,7 @@ public class GroupController {
             return "group";
         }
 
-        VerificationCode verificationCode = verificationCodeService.checkIfExistForGroupWithToken(groupId, token)
+        VerificationCode verificationCode = verificationCodeService.findCodeForGroupWithToken(groupId, token)
                 .orElseGet(() -> verificationCodeService.createVerificationCodeForGroupWithToken(groupId, token));
         // 7047
 
