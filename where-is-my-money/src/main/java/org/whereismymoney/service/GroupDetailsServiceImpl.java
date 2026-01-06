@@ -2,6 +2,7 @@ package org.whereismymoney.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.whereismymoney.controllers.v2.dto.GroupSummary;
 import org.whereismymoney.dto.GroupDetails;
 import org.whereismymoney.dto.UserDto;
 import org.whereismymoney.model.Group;
