@@ -13,8 +13,6 @@ code {
 }
 
 .icon-very-small {
-  .icon-very-small {
-    width: 1.6rem;
-    height: 1.6rem;
-  }
+  width: 1.6rem;
+  height: 1.6rem;
 }
