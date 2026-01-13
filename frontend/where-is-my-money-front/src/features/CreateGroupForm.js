@@ -1,6 +1,6 @@
-export default function CreateGroupForm() {
+export default function CreateGroupForm({ onShowLink }) {
   return (
-    <div className="card rounded-3 p-4 shadow-sm">
+    <>
       <div className="row">
         <button className="btn">
           <span className="mx-2">&arr;</span>Powrót
@@ -22,11 +22,14 @@ export default function CreateGroupForm() {
         </div>
 
         <div className="mt-4">
-          <button className="btn bg-linear-gradient w-100 text-white">
+          <button
+            onClick={onShowLink}
+            className="btn bg-linear-gradient w-100 text-white"
+          >
             Utwórz grupę
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
